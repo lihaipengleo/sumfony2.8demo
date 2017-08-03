@@ -1,0 +1,6 @@
+#app:
+#    resource: "@AppBundle/Controller/"
+#    type:     annotation
+AppBundle_job:
+        resource: "@AppBundle/Resources/config/routing.yml"
+        prefix:   /job

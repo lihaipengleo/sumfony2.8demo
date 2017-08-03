@@ -1,0 +1,24 @@
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div>
+<table>
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+        <th{% if pagination.isSorted('a.Company') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Company', 'a.company') }}</th>
+        <th>{{ knp_pagination_sortable(pagination, 'Release', ['a.created_at','a.expires_at']) }}</th>
+    </tr>
+
+    {# table body #}
+    {% for job in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ job.id }}</td>
+            <td>{{ job.company }}</td>
+            <td>{{ job.createdAt | date('Y-m-d') }},{{ job.expiresAt | date('H:i:s') }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>

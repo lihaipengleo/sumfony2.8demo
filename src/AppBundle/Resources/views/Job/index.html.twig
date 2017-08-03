@@ -1,0 +1,39 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/jobs.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block content %}
+    <div id="jobs">
+
+            <div>
+                <div class="category">
+                    <div class="feed">
+                        <a href="">Feed</a>
+                    </div>
+                    <h1><a href="">分页测试</a></h1>
+                </div>
+                <table class="jobs">
+                    <tr>
+                        {# sorting of properties based on query components #}
+                        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+                        <th{% if pagination.isSorted('a.Company') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Company', 'a.company') }}</th>
+                        <th>{{ knp_pagination_sortable(pagination, 'Release', ['a.created_at','a.expires_at']) }}</th>
+                    </tr>
+                    {% for job in pagination %}
+                        <tr {% if loop.index is odd %}class="color"{% endif %}>
+                            <td>{{ job.id }}</td>
+                            <td><a href="{{ path('ibw_job_show', { 'id': job.id, 'company': job.companyslug, 'location': job.locationslug, 'position': job.positionslug }) }}">{{ job.company }}</a></td>
+                            <td>{{ job.createdAt | date('Y-m-d') }},{{ job.expiresAt | date('H:i:s') }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+app_ibw_category:
+    resource: "@AppBundle/Resources/config/routing/category.yml"
+    prefix:   /ibw_category
+
+#app_ibw_job:
+#    resource: "@AppBundle/Resources/config/routing/job.yml"
+#    prefix:   /ibw_job
+AppBundle_job:
+        resource: "@AppBundle/Resources/config/routing/job.yml"
+        prefix:   /
+app_homepage:
+    pattern:  /
+    defaults: { _controller: AppBundle:Job:index }
+AppBundle_category:
+    pattern:  /category/{slug}
+    defaults: { _controller: AppBundle:Category:show }
+
+

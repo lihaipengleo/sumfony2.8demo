@@ -1,0 +1,42 @@
+ibw_job:
+    path:     /
+    defaults: { _controller: "AppBundle:Job:index" }
+
+ibw_job_show:
+    path:     /{company}/{location}/{id}/{position}
+    defaults: { _controller: "AppBundle:Job:show" }
+    requirements:
+            id:  \d+
+
+ibw_job_preview:
+    pattern:  /{company}/{location}/{token}/{position}
+    defaults: { _controller: "AppBundle:Job:preview" }
+    requirements:
+        token:  \w+
+
+ibw_job_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Job:new" }
+
+ibw_job_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Job:create" }
+    methods:  POST
+
+ibw_job_edit:
+    pattern:   /{token}/edit
+    defaults: { _controller: "AppBundle:Job:edit" }
+
+ibw_job_update:
+    pattern:  /{token}/update
+    defaults: { _controller: "AppBundle:Job:update" }
+    methods:  [POST, PUT]
+
+ibw_job_delete:
+    pattern:   /{token}/delete
+    defaults: { _controller: "AppBundle:Job:delete" }
+    methods:  [POST, DELETE]
+ibw_job_list:
+    path:     /list
+    defaults: { _controller: "AppBundle:Job:list" }
+

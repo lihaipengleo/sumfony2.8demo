@@ -1,0 +1,165 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Job
+ *
+ * @ORM\Table(name="job")
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ */
+class Job
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="company", type="string", length=255)
+     */
+    private $company;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logo", type="string", length=255, nullable=true)
+     */
+    private $logo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="position", type="string", length=255)
+     */
+    private $position;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="location", type="string", length=255)
+     */
+    private $location;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="how_to_apply", type="text")
+     */
+    private $how_to_apply;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="token", type="string", length=255, unique=true)
+     */
+    private $token;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_public", type="boolean", nullable=true)
+     */
+    private $is_public;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_activated", type="boolean", nullable=true)
+     */
+    private $is_activated;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="expires_at", type="datetime")
+     */
+    private $expires_at;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updated_at;
+
+    /**
+     * @var \AppBundle\Entity\Category
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="jobs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    private $category;
+
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setExpiresAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        // Add your code here
+    }
+}
+

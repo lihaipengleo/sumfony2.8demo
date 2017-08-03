@@ -1,0 +1,30 @@
+ibw_category:
+    path:     /
+    defaults: { _controller: "AppBundle:Category:index" }
+
+ibw_category_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Category:show" }
+
+ibw_category_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Category:new" }
+
+ibw_category_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Category:create" }
+    methods:  POST
+
+ibw_category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Category:edit" }
+
+ibw_category_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Category:update" }
+    methods:  [POST, PUT]
+
+ibw_category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Category:delete" }
+    methods:  [POST, DELETE]
